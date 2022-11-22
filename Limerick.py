@@ -16,6 +16,8 @@ class Limerick:
         self.stopwords = set(stopwords.words('english'))
         self.stopwords.remove('the')
         self.stopwords.remove('there')
+        self.a_meter = [1,2,5]
+        self.b_meter = [3,4]
         self.a_rhymes = []
         self.b_rhymes = []
         self.model = Globals.MODEL
@@ -27,7 +29,7 @@ class Limerick:
     def gen_new_line(self, line_number):
         gen_new = True
         while gen_new:
-            line = self.model.make_short_sentence(40)
+            line = self.model.make_short_sentence(40, max_overlap_total=5)
             line_stripped = line.translate(str.maketrans('', '', string.punctuation))
             words = word_tokenize(line_stripped)
             if line_number == 1:
