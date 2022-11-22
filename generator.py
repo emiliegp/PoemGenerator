@@ -1,20 +1,37 @@
-"""
-Pseudocode:
-1. user input for subject of Limerick & 2 nouns for metaphors/comparisons
-2. Generates first line of poem in keeping with meter using pronoucing
-    library
-3. tracks the last word in first line and uses pronouncing library to generate
-    list of words that rhyme with it, A
-4. randomly chooses a word from A and reverse engineers line 2  
-5. generates third line of poem incorperating one noun for metaphor
-6. tracks the last word of the third line and uses prounoucing library to 
-    generate list of words that rhyme with it, B
-7. randomly chooses a word from B and reverse engineers line 4 while also 
-    including the second noun from the poem
-8. randomly chooses a word from A and reverse engineers line 5
+import Globals
+import Limerick 
 
-TODO:
-1. import pronoucing library
-2. incode meter rules of a limerick and define a word genertaions method 
-3. use ConceptNet to 
 """
+"""
+
+def main():
+    gen_more_poems = True
+    Globals.init()
+    poem = Limerick.Limerick()
+    print("This is an interactive poem generation experience. From a corpus" + \
+        "\nof about 3000 lines of Limericks gathered from Project Gutenburg," +\
+        "\nthis systems builds Limerick-like poems!\n")
+    
+    print("\nFirst lets see where the system begins...")
+    while gen_more_poems:
+        poem.gen_poem()
+        print(poem)
+        poem.say_poem()
+
+        user_input = input("\nDid you like the poem generated? (Y/N) \n")
+        if user_input == "N":
+            print("\nAlirght let's try to change some things... \n")
+            poem.fix_pronouns()
+            print(poem)
+            print('\nHopefully that was better! \n \n')
+
+        more_poems = input("Thank you for using the Poem Generator! Would you" +\
+            " like to generate a new poem? (Y/N)\n")
+        if more_poems == "N":
+            gen_more_poems = False
+    
+    print("Thank you for creating poems with us!")
+    
+
+if __name__ == "__main__":
+    main()
