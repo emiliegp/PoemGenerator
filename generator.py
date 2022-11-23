@@ -1,8 +1,16 @@
+"""
+Emilie Grand'Pierre 
+Computational Creativity (CSCI 3725)
+M6: Poetry Slam
+9/15/2022
+
+This file works as the main method of the poetry generator, Using the Liemrick 
+class and user input, this system produces a Liemrick-like poem inspried by 
+the publichsed Limericks within Porject Gutenburg. 
+"""
+
 import Globals
 import Limerick 
-
-"""
-"""
 
 def main():
     gen_more_poems = True
@@ -21,8 +29,9 @@ def main():
         user_input = input("\nDid you like the poem generated? (Y/N) \n")
         if user_input == "N":
             print("\nAlirght let's try to change some things... \n")
-            poem.fix_pronouns()
+            poem.fix_pronounsa()
             print(poem)
+            poem.say_poem()
             print('\nHopefully that was better! \n \n')
 
         more_poems = input("Thank you for using the Poem Generator! Would you" +\
